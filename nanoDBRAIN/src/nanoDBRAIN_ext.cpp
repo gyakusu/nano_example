@@ -39,5 +39,6 @@ NB_MODULE(nanoDBRAIN_ext, m) {
     }
 
     std::cout << "a0 x a1 = " << a01[N - 1].n.transpose() << std::endl;
+    std::cout << "Success!" << std::endl;
   });
 }

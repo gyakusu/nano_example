@@ -33,19 +33,6 @@ find_package(Python 3.8
 # Import nanobind through CMake's find_package mechanism
 find_package(nanobind CONFIG REQUIRED)
 
-# add this line to use DBRAIN
-#
-find_package(Eigen3 REQUIRED)
-message("-- Found Eigen version ${Eigen3_VERSION}: ${Eigen3_DIR} and include by ${EIGEN3_INCLUDE_DIR}")
-include_directories(GLOB_RECURSE "../include")
-file(GLOB_RECURSE LIB_SUB "../src/sub.cpp")
-add_library(SUB STATIC ${LIB_SUB})
-target_link_libraries(SUB PUBLIC Eigen3::Eigen)
-set_target_properties(SUB PROPERTIES POSITION_INDEPENDENT_CODE ON)
-message("-- Include directory: ${CMAKE_CURRENT_SOURCE_DIR}/../include/")
-#
-# end of line to use DBRAIN
-
 # We are now ready to compile the actual extension module
 nanobind_add_module(
   # Name of the extension

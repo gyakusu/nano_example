@@ -24,6 +24,15 @@ Eigen3::Eigen
 SUB
 )
 message("-- Main executable: ${LIB_MAIN}")
-message("usage `cmake --build build`")
-message("usage `./build/main`")
+message("usage `$ cmake --build build`")
+message("usage `$ ./build/main`")
 
+option(PIP_INSTALL "Install nanoDBRAIN library" ON)
+
+if(PIP_INSTALL)
+    message("-- Install nanoDBRAIN library")
+    message("usage `$ pip install nanobind scikit-build-core[pyproject]")
+    message("usage `$ pip install --no-build-isolation -ve .`")
+    add_subdirectory(nanoDBRAIN)
+    message("-- nanoDBRAIN library: ${CMAKE_CURRENT_SOURCE_DIR}/nanoDBRAIN")
+endif()

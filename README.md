@@ -4,15 +4,21 @@
 
 - C++17準拠であるため `<optional>` などのstdライブラリを使用できます．
 - CMakeファイルを編集することにより，`Eigen` などのincludeがあるヘッダーをそのまま使うことができます．
-- サブディレクトリ，`nanoDBRAIN` に関係ファイルを詰め込むことによって，プロジェクトへの変更を最小限に抑えています．（代わりにCMakeには多少の重複が含まれます．）
-  - includeなどは `include_directories("../include/")` などとすることにより解決しています．
+- サブディレクトリ，`nanoDBRAIN` に関係ファイルを詰め込むことによって，プロジェクトへの変更を最小限に抑えています．
 
 ## 使い方
+
+### 一括ビルド
+
+```sh
+pip install nanobind scikit-build-core
+pip install --no-build-isolation -ve .
+```
 
 ### main.cpp ファイルによる動作確認
 
 ```sh
-cmake -S . -B build
+cmake -S . -B build -DPIP_INSTALL=OFF
 cmake --build build
 ./build/MAIN
 ```
