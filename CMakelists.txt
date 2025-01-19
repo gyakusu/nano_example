@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.5)
+project(nano_example)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_BUILD_TYPE=Release)
+set(CMAKE_CXX_FLAGS="-march=native")
+
+find_package(Eigen3 REQUIRED)
+message("-- Found Eigen version ${Eigen3_VERSION}: ${Eigen3_DIR} and include by ${EIGEN3_INCLUDE_DIR}")
+
+include_directories("include/")
+message("-- Include directory: ${CMAKE_CURRENT_SOURCE_DIR}/include/")
+
+file(GLOB_RECURSE LIB_SUB "src/sub.cpp")
+add_library(SUB ${LIB_SUB})
+target_link_libraries(SUB PUBLIC Eigen3::Eigen)
+message("-- SUB library: ${LIB_SUB}")
+
+file(GLOB_RECURSE LIB_MAIN "src/main.cpp")
+add_executable(MAIN ${LIB_MAIN})
+target_link_libraries(MAIN PUBLIC
+Eigen3::Eigen
+SUB
+# Utility
+# BS
+)
+message("-- Main executable: ${LIB_MAIN}")
+message("usage `cmake --build build`")
+message("usage `./build/main`")
+
