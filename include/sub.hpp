@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Eigen/Dense>
-#include <tuple>
 #include <optional>
+#include <tuple>
 
 using Eigen::Vector3d;
 
@@ -15,8 +15,8 @@ class B {
  public:
   A cross(const A& a, const A& b);
   std::tuple<A, A> dot_cross(const A& a, const A& b);
+  std::optional<A> cross_opt(const A& a, const A& b);
 };
-
 
 /** reference for testing
 int main() {

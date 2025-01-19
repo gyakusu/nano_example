@@ -22,8 +22,6 @@ add_executable(MAIN ${LIB_MAIN})
 target_link_libraries(MAIN PUBLIC
 Eigen3::Eigen
 SUB
-# Utility
-# BS
 )
 message("-- Main executable: ${LIB_MAIN}")
 message("usage `cmake --build build`")

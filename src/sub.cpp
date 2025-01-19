@@ -19,3 +19,11 @@ std::tuple<A, A> B::dot_cross(const A& a, const A& b) {
   return std::make_tuple(c, d);
 }
 
+std::optional<A> B::cross_opt(const A& a, const A& b) {
+  auto an = a.n;
+  auto bn = b.n;
+  auto cn = an.cross(bn);
+  A c;
+  c.n = cn;
+  return c;
+}
