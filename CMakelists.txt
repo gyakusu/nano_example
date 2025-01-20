@@ -27,12 +27,17 @@ message("-- Main executable: ${LIB_MAIN}")
 message("usage `$ cmake --build build`")
 message("usage `$ ./build/main`")
 
-option(PIP_INSTALL "Install nanoDBRAIN library" ON)
-
-if(PIP_INSTALL)
-    message("-- Install nanoDBRAIN library")
-    message("usage `$ pip install nanobind scikit-build-core[pyproject]")
-    message("usage `$ pip install --no-build-isolation -ve .`")
-    add_subdirectory(nanoDBRAIN)
-    message("-- nanoDBRAIN library: ${CMAKE_CURRENT_SOURCE_DIR}/nanoDBRAIN")
+if(SKBUILD)
+  message("-- Install nanoDBRAIN library")
+  add_subdirectory(nanoDBRAIN)
+else()
+  message("This CMake file is meant to be executed
+  using 'scikit-build'. Running it directly will almost
+  certainly not produce the desired result. If you are a
+  user trying to install this package, please use the
+  command below, which will install all necessary build
+  dependencies, compile the package in an isolated
+  environment, and then install it.")
+  message("usage `$ pip install nanobind scikit-build-core[pyproject]")
+  message("usage `$ pip install --no-build-isolation -ve .`")
 endif()

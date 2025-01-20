@@ -8,17 +8,10 @@
 
 ## 使い方
 
-### 一括ビルド
-
-```sh
-pip install nanobind scikit-build-core
-pip install --no-build-isolation -ve .
-```
-
 ### main.cpp ファイルによる動作確認
 
 ```sh
-cmake -S . -B build -DPIP_INSTALL=OFF
+cmake -S . -B build
 cmake --build build
 ./build/MAIN
 ```
@@ -34,5 +27,6 @@ nanobindの使用にはpython3.8が推奨されています．
 ### nanobindを用いたインストール
 
 ```sh
-.env/bin/python3 -m pip install ./nanoDBRAIN
+pip install nanobind scikit-build-core
+pip install --no-build-isolation -ve .
 ```
