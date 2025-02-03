@@ -28,5 +28,5 @@ nanobindの使用にはpython3.8が推奨されています．
 
 ```sh
 pip install nanobind scikit-build-core
-pip install --no-build-isolation -ve .
+pip install ./nanoDBRAIN
 ```

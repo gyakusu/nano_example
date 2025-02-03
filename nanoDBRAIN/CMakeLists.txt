@@ -25,6 +25,18 @@ if (NOT SKBUILD)
   after editing C++ files.")
 endif()
 
+
+find_package(Eigen3 REQUIRED)
+message("-- Found Eigen version ${Eigen3_VERSION}: ${Eigen3_DIR} and include by ${EIGEN3_INCLUDE_DIR}")
+
+include_directories("../include/")
+message("-- Include directory: ${CMAKE_CURRENT_SOURCE_DIR}/include/")
+
+file(GLOB_RECURSE LIB_SUB "../src/sub.cpp")
+add_library(SUB ${LIB_SUB})
+target_link_libraries(SUB PUBLIC Eigen3::Eigen)
+message("-- SUB library: ${LIB_SUB}")
+
 # Try to import all Python components potentially needed by nanobind
 find_package(Python 3.8
   REQUIRED COMPONENTS Interpreter Development.Module
@@ -54,6 +66,7 @@ nanobind_add_module(
   # Source code goes here
   src/nanoDBRAIN_ext.cpp
 )
+
 
 target_link_libraries(
   nanoDBRAIN_ext 
